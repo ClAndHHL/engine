@@ -175,7 +175,7 @@ var ScrollView = cc.Class({
             type: cc.Scrollbar,
             tooltip: 'i18n:COMPONENT.scrollview.horizontal_bar',
             notify: function() {
-                if (this.horizontalScrollBar) {
+                if (cc.isValid(this.horizontalScrollBar)) {
                     this.horizontalScrollBar.setTargetScrollView(this);
                     this._updateScrollBar(0);
                 }
@@ -193,7 +193,7 @@ var ScrollView = cc.Class({
             type: cc.Scrollbar,
             tooltip: 'i18n:COMPONENT.scrollview.vertical_bar',
             notify: function() {
-                if (this.verticalScrollBar) {
+                if (cc.isValid(this.verticalScrollBar)) {
                     this.verticalScrollBar.setTargetScrollView(this);
                     this._updateScrollBar(0);
                 }
@@ -992,31 +992,31 @@ var ScrollView = cc.Class({
     },
 
     _updateScrollBar: function(outOfBoundary) {
-        if (this.horizontalScrollBar) {
+        if (cc.isValid(this.horizontalScrollBar)) {
             this.horizontalScrollBar._onScroll(outOfBoundary);
         }
 
-        if (this.verticalScrollBar) {
+        if (cc.isValid(this.verticalScrollBar)) {
             this.verticalScrollBar._onScroll(outOfBoundary);
         }
     },
 
     _onScrollBarTouchBegan: function() {
-        if (this.horizontalScrollBar) {
+        if (cc.isValid(this.horizontalScrollBar)) {
             this.horizontalScrollBar._onTouchBegan();
         }
 
-        if (this.verticalScrollBar) {
+        if (cc.isValid(this.verticalScrollBar)) {
             this.verticalScrollBar._onTouchBegan();
         }
     },
 
     _onScrollBarTouchEnded: function() {
-        if (this.horizontalScrollBar) {
+        if (cc.isValid(this.horizontalScrollBar)) {
             this.horizontalScrollBar._onTouchEnded();
         }
 
-        if (this.verticalScrollBar) {
+        if (cc.isValid(this.verticalScrollBar)) {
             this.verticalScrollBar._onTouchEnded();
         }
     },
