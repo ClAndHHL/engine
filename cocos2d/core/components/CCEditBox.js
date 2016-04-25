@@ -465,8 +465,10 @@ var EditBox = cc.Class({
     },
 
     _registerEvent: function () {
-        this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchBegan, this);
-        this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEnded, this);
+        if(!cc.sys.isNative) {
+            this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchBegan, this);
+            this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEnded, this);
+        }
     },
 
     _onTouchBegan: function(event) {
@@ -485,4 +487,11 @@ var EditBox = cc.Class({
 
 });
 
+EditBox.prototype.editBoxEditingDidBegin = function (sender) {
+    this.editBoxEditingDidBegan(sender);
+}
+
+EditBox.prototype.editBoxEditingDidEnd = function (sender) {
+    this.editBoxEditingDidEnded(sender);
+}
 cc.EditBox = module.exports = EditBox;
